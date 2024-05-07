@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const {getContacts, createContact, getContactwithID, updateContact, deleteContact} = require("../controller/contactController");
+const validateToken = require("../middlewares/validateTokenHandler");
 
+//for private routes ., here all routes are private
+router.use(validateToken);
 //Get all contact
 router.route("/").get(getContacts);
 
